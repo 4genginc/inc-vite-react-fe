@@ -2,6 +2,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { createStyleImportPlugin } from 'vite-plugin-style-import';
 import themeOverrides from './src/styles/theme-overrides.js';
+import incSiteTheme from './src/styles/inc-site-theme.js';
+import vitePluginImp from 'vite-plugin-imp';
+
+// Merge the variables from theme-overrides and inc-site-theme
+const themeVariables = { ...themeOverrides, ...incSiteTheme };
 
 export default defineConfig({
   plugins: [
@@ -15,12 +20,22 @@ export default defineConfig({
         },
       ],
     }),
+    vitePluginImp({
+      libList: [
+        {
+          libName: 'antd',
+          style(name) {
+            return `antd/es/${name}/style/index.less`;
+          },
+        },
+      ],
+    }),
   ],
   css: {
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,
-        modifyVars: themeOverrides,
+        modifyVars: themeVariables,
       },
     },
   },
@@ -33,4 +48,3 @@ export default defineConfig({
     setupFiles: './src/__test__/setupTests.jsx',
   },
 });
-

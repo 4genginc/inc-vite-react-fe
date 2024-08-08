@@ -2,20 +2,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { Button } from '../../common';
+// import { Button as AntButton } from 'antd';
+
+import '../../../styles/LandingPageStyles/index.less';
+
 function RenderLandingPage() {
   return (
-    <div>
+    <div className="landing-main-text">
       <h1>Welcome to Labs Basic SPA</h1>
-      <div>
+      <div className="landing-main-text">
         <p>
-          This is an example of how we&apos;d like for you to approach page/routable
+          This is <span>an example</span> of how we&apos;d like for you to approach page/routable
           components.
         </p>
         <p>
-          <Link to="/example-list">Example List of Items</Link>
+          <Link to="/">Home</Link>
         </p>
+
+        <Button
+          // handleClick={() => authService.logout()}
+          buttonText="common button"
+        />
+
+        {/*<AntButton type="primary">Primary Button</AntButton>*/}
+
       </div>
     </div>
   );
 }
+
 export default RenderLandingPage;

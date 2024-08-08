@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-  BrowserRouter as Router,
-  Route,
-  // useHistory,
-  Switch,
-} from 'react-router-dom';
-
-import 'antd/dist/antd.css';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Layout, Menu } from 'antd';
+import './styles/index.less';
+import 'antd/dist/antd.less';
 
 import { NotFoundPage } from './components/pages/NotFound';
 import { ExampleListPage } from './components/pages/ExampleList';
@@ -19,32 +15,44 @@ import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { LoadingComponent } from './components/common';
 import { ImageList } from './components/pages/ImageList';
 
+const { Header, Content, Footer } = Layout;
+
+const menuItems = [
+  { key: '1', label: <Link to="/">Home</Link> },
+  { key: '2', label: <Link to="/example-list">Example List</Link> },
+  { key: '3', label: <Link to="/profile-list">Profile List</Link> },
+  { key: '4', label: <Link to="/datavis">Data Visualization</Link> },
+  { key: '5', label: <Link to="/images">Images</Link> },
+];
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
     <React.StrictMode>
-      <App />
+      <Layout style={{ minHeight: '100vh' }}>
+        <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+          <div className="logo" />
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} items={menuItems} />
+        </Header>
+        <Content style={{ padding: '0 50px', marginTop: 64 }}>
+          <div className="site-layout-content" style={{ padding: 24, minHeight: 380 }}>
+            <App />
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>
+          Ant Design ©2023 Created by Ant UED
+        </Footer>
+      </Layout>
     </React.StrictMode>
-  </Router>,
+  </Router>
 );
 
 // eslint-disable-next-line react-refresh/only-export-components
 function App() {
-  // The reason to declare App this way is so that we can use any helper functions we'd need for business logic, in our case auth.
-  // React Router has a nifty useHistory hook we can use at this level to ensure we have security around our routes.
-  // const history = useHistory();
-  //
-  // const authHandler = () => {
-  //   // We pass this to our <Security /> component that wraps our routes.
-  //   // It'll automatically check if userToken is available and push back to login if not :)
-  //   history.push('/login');
-  // };
-
   return (
     <Switch>
       <Route path="/login" component={LoginPage} />
       <Route path="/landing" component={LandingPage} />
       <Route path="/images" component={ImageList} />
-      {/* any of the routes you need secured should be registered as SecureRoutes */}
       <Route
         path="/"
         exact

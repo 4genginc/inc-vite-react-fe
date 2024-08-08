@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '../../common';
-// import { Button } from 'antd';
+// import { Button } from '../../common';
+import { Button } from 'antd';
 
 function RenderHomePage(props) {
   const {
@@ -36,18 +36,18 @@ function RenderHomePage(props) {
           <Link to="/datavis">Data Visualizations Example</Link>
         </p>
 
-          <Button
-            // handleClick={() => authService.logout()}
-            buttonText="Logout (common button)"
-          />
+          {/*<Button*/}
+          {/*  // handleClick={() => authService.logout()}*/}
+          {/*  buttonText="Logout (common button)"*/}
+          {/*/>*/}
 
-        {/*<Button*/}
-        {/*  type="primary"*/}
-        {/*  // // onClick={() => authService.logout()}*/}
-        {/*  // onClick={() => logout()}*/}
-        {/*>*/}
-        {/*  Logout*/}
-        {/*</Button>*/}
+        <Button
+          type="primary"
+          // // onClick={() => authService.logout()}
+          // onClick={() => logout()}
+        >
+          Logout
+        </Button>
 
       </div>
     </div>

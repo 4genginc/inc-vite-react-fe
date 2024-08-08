@@ -1,32 +1,53 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import { Button } from '../../common';
-// import { Button as AntButton } from 'antd';
-
+import logo from '../../../img/coderheroes-logo.svg';
+import Button from '../../common/Button';
 import '../../../styles/LandingPageStyles/index.less';
+import { Typography } from 'antd';
+import { NavLink } from 'react-router-dom';
+//TO-DO: Implement Auth0
+
+const { Title, Paragraph } = Typography;
 
 function RenderLandingPage() {
   return (
-    <div className="landing-main-text">
-      <h1>Welcome to Labs Basic SPA</h1>
-      <div className="landing-main-text">
-        <p>
-          This is <span>an example</span> of how we&apos;d like for you to approach page/routable
-          components.
-        </p>
-        <p>
-          <Link to="/">Home</Link>
-        </p>
+    <div className="landing-container">
+      {/* Main text container */}
+      <div className="landing-main-container">
+        <div className="cloudbg">
+          <img
+            className="coder-heroes"
+            src={logo}
+            alt="CoderHeroes Text in Turquoise"
+          />
+          <div className="landing-main-text">
+            <Title className="landing-main-text landing-main-title" level={2}>
+              Coding is a Superpower!
+            </Title>
+            <Paragraph className="landing-main-text">
+              Through a love of teaching and technology, <br />
+              we empower youth to change the world with their ideas.
+            </Paragraph>
+          </div>
 
-        <Button
-          // handleClick={() => authService.logout()}
-          buttonText="common button"
-        />
-
-        {/*<AntButton type="primary">Primary Button</AntButton>*/}
-
+          {/* Button container */}
+          <div className="landing-button-container">
+            <NavLink to="/browse-programs">
+              <Button
+                classType="browse-btn btn"
+                buttonText="Browse Programs"
+                onClick={''}
+              ></Button>
+            </NavLink>
+            <NavLink to="/register">
+              <Button
+                classType="create-account-btn btn"
+                buttonText="Create Account"
+                onClick={''}
+              ></Button>
+            </NavLink>
+          </div>
+        </div>
       </div>
     </div>
   );

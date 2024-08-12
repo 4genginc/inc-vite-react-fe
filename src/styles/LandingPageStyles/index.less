@@ -1,24 +1,25 @@
-// LandingPage Styles
-
+// LandingPageStyles/index.less
 @import '../variables.less';
 
-//** Landing Page Styles - DESKTOP **//
+.landing-page {
+  padding: 0 50px;
+  margin-top: 64px;
 
-/* First Content Section */
+  &__title {
+    text-align: center;
+    font-family: @text__font-family--header;
+    margin-bottom: 20px; // Adjusted margin for visual balance
+  }
 
-.landing-main-title {
-  font-family: @text__font-family, @text__font-family--header;
+  &__content {
+    padding: 24px;
+    min-height: 380px;
+    text-align: center;
+    font-size: 1.25rem;
+    font-family: @text__font-family--header;
+
+    .highlight {
+      color: @primary-color;
+    }
+  }
 }
-
-.landing-main-text {
-  margin: 5% 0;
-  text-align: center;
-  font-family: @text__font-family--header;
-  font-size: 1.25rem;
-}
-
-/* Example usage of primary color */
-span {
-  color: @primary-color;
-}
-

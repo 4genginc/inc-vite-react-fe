@@ -17,7 +17,7 @@ import { ImageList } from './components/pages/ImageList';
 
 import { Footer } from '../src/components/common/Footer';
 
-const { Header, Content } = Layout;
+const { Header } = Layout;
 
 const menuItems = [
   { key: '1', label: <Link to="/">Home</Link> },
@@ -35,11 +35,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <div className="logo" />
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} items={menuItems} />
         </Header>
-        <Content style={{ padding: '0 50px', marginTop: 64 }}>
-          <div className="site-layout-content" style={{ padding: 24, minHeight: 380 }}>
-            <App />
-          </div>
-        </Content>
+        <App />
         <Footer />
       </Layout>
     </React.StrictMode>

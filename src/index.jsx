@@ -15,6 +15,8 @@ import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { LoadingComponent } from './components/common';
 import { ImageList } from './components/pages/ImageList';
 
+import { FooterPart } from '../src/components/common';
+
 const { Header, Content, Footer } = Layout;
 
 const menuItems = [
@@ -38,9 +40,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <App />
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          Cici Design ©2023 Created by Ant UED
-        </Footer>
+        <FooterPart
+          style={{ textAlign: 'center' }} buttonText={"Cici Design ©2023 Created by Ant UED"}>
+        </FooterPart>
       </Layout>
     </React.StrictMode>
   </Router>

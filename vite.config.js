@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react';
 import { createStyleImportPlugin } from 'vite-plugin-style-import';
 import themeOverrides from './src/styles/theme-overrides.js';
 import incSiteTheme from './src/styles/inc-site-theme.js';
-import vitePluginImp from 'vite-plugin-imp';
 
 // Merge the variables from theme-overrides and inc-site-theme
 const themeVariables = { ...themeOverrides, ...incSiteTheme };
@@ -17,16 +16,6 @@ export default defineConfig({
           libraryName: 'antd',
           esModule: true,
           resolveStyle: (name) => `antd/es/${name}/style/index`,
-        },
-      ],
-    }),
-    vitePluginImp({
-      libList: [
-        {
-          libName: 'antd',
-          style(name) {
-            return `antd/es/${name}/style/index.less`;
-          },
         },
       ],
     }),

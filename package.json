@@ -19,6 +19,7 @@
     "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.4.0",
     "@okta/okta-react": "^6.9.0",
     "antd": "^4.24.16",
     "axios": "^1.7.2",

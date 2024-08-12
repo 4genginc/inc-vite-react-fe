@@ -1,40 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import { Layout, Menu } from 'antd';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Layout } from 'antd';
 import './styles/index.less';
 import 'antd/dist/antd.less';
 
-import { NotFoundPage } from './components/pages/NotFound';
 import { ExampleListPage } from './components/pages/ExampleList';
 import { ProfileListPage } from './components/pages/ProfileList';
-import { LoginPage } from './components/pages/Login';
-import { HomePage } from './components/pages/Home';
-import { LandingPage } from './components/pages/Landing';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
-import { LoadingComponent } from './components/common';
 import { ImageList } from './components/pages/ImageList';
 
 import { Footer } from '../src/components/common/Footer';
+import { Header } from './components/common/Header';
+import { HomePage } from './components/pages/Home';
+import { LandingPage } from './components/pages/Landing';
+import { LoadingComponent } from './components/common';
+import { LoginPage } from './components/pages/Login';
+import { NotFoundPage } from './components/pages/NotFound';
 
-const { Header } = Layout;
 
-const menuItems = [
-  { key: '1', label: <Link to="/">Home</Link> },
-  { key: '2', label: <Link to="/example-list">Example List</Link> },
-  { key: '3', label: <Link to="/profile-list">Profile List</Link> },
-  { key: '4', label: <Link to="/datavis">Data Visualization</Link> },
-  { key: '5', label: <Link to="/images">Images</Link> },
-];
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
     <React.StrictMode>
-      <Layout style={{ minHeight: '100vh' }}>
-        <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-          <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} items={menuItems} />
-        </Header>
+      <Layout
+        style={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+      }}
+      >
+        <Header />
         <App />
         <Footer />
       </Layout>

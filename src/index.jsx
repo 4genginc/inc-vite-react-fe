@@ -16,6 +16,7 @@ import { HomePage } from './components/pages/Home';
 import { LandingPage } from './components/pages/Landing';
 import { LoadingComponent } from './components/common';
 import { LoginPage } from './components/pages/Login';
+import Login from './components/pages/Login/LoginFT.jsx'
 import { NotFoundPage } from './components/pages/NotFound';
 
 import Footer from './components/common/FooterCH/index.jsx';
@@ -43,6 +44,7 @@ function App() {
   return (
     <Switch>
       <Route path="/login" component={LoginPage} />
+      <Route path="/loginft" component={Login} />
       <Route path="/landing" component={LandingPage} />
       <Route path="/images" component={ImageList} />
       <Route

@@ -19,7 +19,6 @@ import { LoginPage } from './components/pages/Login';
 import { NotFoundPage } from './components/pages/NotFound';
 
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
     <React.StrictMode>

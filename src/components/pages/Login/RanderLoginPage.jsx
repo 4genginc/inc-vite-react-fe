@@ -1,14 +1,12 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { setUsername, setPassword, login } from '../../../state/actions/authActions';
 import { FormButton, FormInput } from '../../common';
 
-const RenderLoginPage = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState(null);
-
+// Define the component with a named function
+function RenderLoginPage({ username, password, isSubmitting, error, setUsername, setPassword, login }) {
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === 'username') {
@@ -18,30 +16,9 @@ const RenderLoginPage = () => {
     }
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-
-    setIsSubmitting(true);
-
-    try {
-      const credentials = { username, password };
-      const response = await axios.post('http://localhost:8000/api/auth/login', credentials);
-      const { token, role, username: userResp } = response.data;
-
-      localStorage.setItem("token", token);
-      localStorage.setItem("role", role);
-      localStorage.setItem("username", userResp);
-
-      // Uncomment and use correct navigation method depending on your router setup
-      // this.props.history.push('/protected');
-
-      console.log('Login successful:', response);
-    } catch (error) {
-      setError(error.message);
-      console.error('Login error:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    login({ username, password });
   };
 
   return (
@@ -66,7 +43,6 @@ const RenderLoginPage = () => {
         />
         <FormButton
           buttonText={isSubmitting ? 'Logging in...' : 'Log in'}
-          handleButtonClick={handleSubmit}
           isDisabled={isSubmitting}
           classType="primary"
         />
@@ -74,6 +50,33 @@ const RenderLoginPage = () => {
       </form>
     </div>
   );
+}
+
+RenderLoginPage.propTypes = {
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  setUsername: PropTypes.func.isRequired,
+  setPassword: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired
 };
 
-export default RenderLoginPage;
+const mapStateToProps = (state) => ({
+  username: state.auth.username,
+  password: state.auth.password,
+  isSubmitting: state.auth.isSubmitting,
+  error: state.auth.error
+});
+
+const mapDispatchToProps = {
+  setUsername,
+  setPassword,
+  login
+};
+
+// Named connected component
+const ConnectedRenderLoginPage = connect(mapStateToProps, mapDispatchToProps)(RenderLoginPage);
+
+// Export named connected component
+export default ConnectedRenderLoginPage;

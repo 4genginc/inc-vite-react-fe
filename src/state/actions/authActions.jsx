@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // Action Types
 export const SET_USERNAME = 'SET_USERNAME';
 export const SET_PASSWORD = 'SET_PASSWORD';
@@ -34,8 +36,11 @@ export const loginFailure = (error) => ({
 export const login = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
   try {
-    const response = await axios.post('http://localhost:8000/api/auth/login', credentials);
+    const response = await axios.post('https://inc-node-js-be-cb1cdbebd389.herokuapp.com/api/auth/login', credentials);
     const { token, role, username: userResp } = response.data;
+
+    console.log(response.data);
+
     localStorage.setItem("token", token);
     localStorage.setItem("role", role);
     localStorage.setItem("username", userResp);

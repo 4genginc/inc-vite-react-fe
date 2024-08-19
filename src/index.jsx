@@ -6,10 +6,15 @@ import './styles/index.less';
 import 'antd/dist/antd.less';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { thunk } from 'redux-thunk';  // Corrected import
 import rootReducer from './state/reducers';
 
-const store = createStore(rootReducer);
+// Apply middleware to the Redux store
+const store = createStore(
+  rootReducer, 
+  applyMiddleware(thunk)
+);
 
 import { Footer } from '../src/components/common/Footer';
 import { Header } from './components/common/Header';

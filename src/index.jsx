@@ -5,6 +5,12 @@ import { Layout } from 'antd';
 import './styles/index.less';
 import 'antd/dist/antd.less';
 
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './state/reducers';
+
+const store = createStore(rootReducer);
+
 import { ExampleListPage } from './components/pages/ExampleList';
 import { ProfileListPage } from './components/pages/ProfileList';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
@@ -20,21 +26,23 @@ import { NotFoundPage } from './components/pages/NotFound';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Router>
-    <React.StrictMode>
-      <Layout
-        style={{
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-      }}
-      >
-        <Header />
-        <App />
-        <Footer />
-      </Layout>
-    </React.StrictMode>
-  </Router>
+  <Provider store={store}>
+    <Router>
+      <React.StrictMode>
+        <Layout
+          style={{
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+        }}
+        >
+          <Header />
+          <App />
+          <Footer />
+        </Layout>
+      </React.StrictMode>
+    </Router>    
+  </Provider>
 );
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -43,12 +51,12 @@ function App() {
     <Switch>
       <Route path="/login" component={LoginPage} />
       <Route path="/landing" component={LandingPage} />
-      <Route path="/images" component={ImageList} />
       <Route
         path="/"
         exact
         component={() => <HomePage LoadingComponent={LoadingComponent} />}
       />
+      <Route path="/images" component={ImageList} />
       <Route path="/example-list" component={ExampleListPage} />
       <Route path="/profile-list" component={ProfileListPage} />
       <Route path="/datavis" component={ExampleDataViz} />

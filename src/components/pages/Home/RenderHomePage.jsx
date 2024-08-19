@@ -22,20 +22,6 @@ function RenderHomePage(props) {
         </p>
         <p>
           <Link to="/login">login</Link>
-        </p>        <p>
-          <Link to="/images">Images</Link>
-        </p>
-        <p>
-          <Link to="/landing">Landing</Link>
-        </p>
-        <p>
-          <Link to="/profile-list">Profiles Example</Link>
-        </p>
-        <p>
-          <Link to="/example-list">Example List of Items</Link>
-        </p>
-        <p>
-          <Link to="/datavis">Data Visualizations Example</Link>
         </p>
 
           {/*<Button*/}

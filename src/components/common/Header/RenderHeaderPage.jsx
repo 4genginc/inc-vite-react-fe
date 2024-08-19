@@ -7,10 +7,8 @@ const { Header } = Layout;
 
 const menuItems = [
   { key: '1', label: <Link to="/">Home</Link> },
-  { key: '2', label: <Link to="/example-list">Example List</Link> },
-  { key: '3', label: <Link to="/profile-list">Profile List</Link> },
-  { key: '4', label: <Link to="/datavis">Data Visualization</Link> },
-  { key: '5', label: <Link to="/images">Images</Link> },
+  { key: '2', label: <Link to="/login">Login</Link> },
+  { key: '3', label: <Link to="/logout">Logout</Link> },
 ];
 
 function RenderHeaderPage() {

@@ -11,11 +11,6 @@ import rootReducer from './state/reducers';
 
 const store = createStore(rootReducer);
 
-import { ExampleListPage } from './components/pages/ExampleList';
-import { ProfileListPage } from './components/pages/ProfileList';
-import { ExampleDataViz } from './components/pages/ExampleDataViz';
-import { ImageList } from './components/pages/ImageList';
-
 import { Footer } from '../src/components/common/Footer';
 import { Header } from './components/common/Header';
 import { HomePage } from './components/pages/Home';
@@ -56,10 +51,6 @@ function App() {
         exact
         component={() => <HomePage LoadingComponent={LoadingComponent} />}
       />
-      <Route path="/images" component={ImageList} />
-      <Route path="/example-list" component={ExampleListPage} />
-      <Route path="/profile-list" component={ProfileListPage} />
-      <Route path="/datavis" component={ExampleDataViz} />
       <Route component={NotFoundPage} />
     </Switch>
   );

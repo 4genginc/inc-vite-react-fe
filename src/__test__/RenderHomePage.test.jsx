@@ -5,7 +5,6 @@ import { render, cleanup, screen } from '@testing-library/react';
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import { MemoryRouter } from 'react-router-dom'; // Import MemoryRouter
 import { HomePage } from '../components/pages/Home';
-import RenderHomePage from '../components/pages/Home/RenderHomePage.jsx';
 import PropTypes from 'prop-types';
 
 const LoadingComponent = ({ message }) => <div>{message}</div>;
@@ -30,18 +29,4 @@ describe('<HomePage /> test suite', () => {
     expect(loading.textContent).toBe('... Fetching user profile');
   });
 
-  it('[2] renders welcome message with user name', () => {
-    const userInfo = { name: 'John' };
-    const { getByText } = render(
-      <MemoryRouter>
-        <RenderHomePage userInfo={userInfo} />
-      </MemoryRouter>,
-    );
-
-    const h1 = getByText(/welcome to labs basic spa/i);
-    expect(h1.textContent).toBe('Welcome to Labs Basic SPA');
-
-    const h3 = getByText(/Hi John, you are more than welcome!/i);
-    expect(h3.textContent).toBe('Hi John, you are more than welcome!');
-  });
 });

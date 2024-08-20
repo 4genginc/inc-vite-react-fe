@@ -5,10 +5,16 @@ import { Layout } from 'antd';
 import './styles/index.less';
 import 'antd/dist/antd.less';
 
-import { ExampleListPage } from './components/pages/ExampleList';
-import { ProfileListPage } from './components/pages/ProfileList';
-import { ExampleDataViz } from './components/pages/ExampleDataViz';
-import { ImageList } from './components/pages/ImageList';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { thunk } from 'redux-thunk';  // Corrected import
+import rootReducer from './state/reducers';
+
+// Apply middleware to the Redux store
+const store = createStore(
+  rootReducer, 
+  applyMiddleware(thunk)
+);
 
 // import { Footer } from '../src/components/common/Footer';
 import { Header } from './components/common/Header';
@@ -16,27 +22,28 @@ import { HomePage } from './components/pages/Home';
 import { LandingPage } from './components/pages/Landing';
 import { LoadingComponent } from './components/common';
 import { LoginPage } from './components/pages/Login';
-import Login from './components/pages/Login/LoginFT.jsx'
 import { NotFoundPage } from './components/pages/NotFound';
 
 import Footer from './components/common/FooterCH/index.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Router>
-    <React.StrictMode>
-      <Layout
-        style={{
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-      }}
-      >
-        <Header />
-        <App />
-        <Footer />
-      </Layout>
-    </React.StrictMode>
-  </Router>
+  <Provider store={store}>
+    <Router>
+      <React.StrictMode>
+        <Layout
+          style={{
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+        }}
+        >
+          <Header />
+          <App />
+          <Footer />
+        </Layout>
+      </React.StrictMode>
+    </Router>    
+  </Provider>
 );
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -44,17 +51,12 @@ function App() {
   return (
     <Switch>
       <Route path="/login" component={LoginPage} />
-      <Route path="/loginft" component={Login} />
       <Route path="/landing" component={LandingPage} />
-      <Route path="/images" component={ImageList} />
       <Route
         path="/"
         exact
         component={() => <HomePage LoadingComponent={LoadingComponent} />}
       />
-      <Route path="/example-list" component={ExampleListPage} />
-      <Route path="/profile-list" component={ProfileListPage} />
-      <Route path="/datavis" component={ExampleDataViz} />
       <Route component={NotFoundPage} />
     </Switch>
   );

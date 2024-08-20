@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import { Button } from '../../common';
 import { Button } from 'antd';
+import '../../../styles/LandingPageStyles/index.less';
 
 function RenderHomePage(props) {
   const {
@@ -11,35 +12,23 @@ function RenderHomePage(props) {
     // authService
   } = props;
   return (
-    <div>
-      <h1>Welcome to Labs Basic SPA</h1>
-      {/* eslint-disable-next-line react/prop-types */}
-      <h3>Hi {userInfo.name}, you are more than welcome!</h3>
-      <div>
+    <div className="landing-container">
+      <div className="landing-main-text">
+        <h1> Welcome to Home page </h1>
+        {/* eslint-disable-next-line react/prop-types */}
+        <h3>Hi {userInfo.name}, I am doing!</h3>
         <p>
-          This is an example of a common example of how we&apos;d like for you to
-          approach components.
-        </p>
-        <p>
-          <Link to="/images">Images</Link>
+          <Link to="/login">Login</Link>
         </p>
         <p>
           <Link to="/landing">Landing</Link>
         </p>
-        <p>
-          <Link to="/profile-list">Profiles Example</Link>
-        </p>
-        <p>
-          <Link to="/example-list">Example List of Items</Link>
-        </p>
-        <p>
-          <Link to="/datavis">Data Visualizations Example</Link>
-        </p>
 
-          {/*<Button*/}
-          {/*  // handleClick={() => authService.logout()}*/}
-          {/*  buttonText="Logout (common button)"*/}
-          {/*/>*/}
+
+        {/*<Button*/}
+        {/*  // handleClick={() => authService.logout()}*/}
+        {/*  buttonText="Logout (common button)"*/}
+        {/*/>*/}
 
         <Button
           type="primary"

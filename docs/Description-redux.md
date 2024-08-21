@@ -67,7 +67,8 @@
 │  │	└── variables.less 
 │  ├── utils 
 │  │	├── oktaConfig.jsx
-│  │	└── Readme.md 
+│  │	├── README.md
+│  │	└── scrollToTopHelper.jsx 
 │  └── index.jsx
 ├── index.html
 ├── .env 

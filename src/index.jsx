@@ -16,15 +16,13 @@ const store = createStore(
   applyMiddleware(thunk)
 );
 
-// import { Footer } from '../src/components/common/Footer';
+import { Footer } from '../src/components/common/Footer';
 import { Header } from './components/common/Header';
 import { HomePage } from './components/pages/Home';
 import { LandingPage } from './components/pages/Landing';
 import { LoadingComponent } from './components/common';
 import { LoginPage } from './components/pages/Login';
 import { NotFoundPage } from './components/pages/NotFound';
-
-import Footer from './components/common/FooterCH/index.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>

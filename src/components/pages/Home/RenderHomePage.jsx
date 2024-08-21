@@ -21,12 +21,7 @@ function RenderHomePage(props) {
           approach components.
         </p>
         <p>
-          <Link to="/login">login</Link>
-        </p>        <p>
           <Link to="/images">Images</Link>
-        </p>
-        <p>
-          <Link to="/landing">Landing</Link>
         </p>
         <p>
           <Link to="/profile-list">Profiles Example</Link>

@@ -1,9 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setUsername, setPassword, login } from '../../../state/actions/authActions';
 import { FormButton, FormInput } from '../../common';
+
+import '../../../styles/Login/index.less';
 
 // Define the component with a named function
 function RenderLoginPage({ username, password, isSubmitting, error, setUsername, setPassword, login }) {
@@ -22,32 +25,38 @@ function RenderLoginPage({ username, password, isSubmitting, error, setUsername,
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          labelId="username"
-          name="username"
-          placeholder="Username"
-          value={username}
-          handleInput={handleChange}
-          disabled={isSubmitting}
-        />
-        <FormInput
-          labelId="password"
-          name="password"
-          placeholder="Password"
-          type="password"
-          value={password}
-          handleInput={handleChange}
-          disabled={isSubmitting}
-        />
-        <FormButton
-          buttonText={isSubmitting ? 'Logging in...' : 'Log in'}
-          isDisabled={isSubmitting}
-          classType="primary"
-        />
-        {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-      </form>
+    <div className="login-container">
+      <div className="login-card">
+        <form className="login-form" onSubmit={handleSubmit}>
+          <FormInput
+            className="login-inputs"
+            labelId="username"
+            name="username"
+            placeholder="Username"
+            value={username}
+            handleInput={handleChange}
+            disabled={isSubmitting}
+          />
+          <FormInput
+            className="login-inputs"
+            labelId="password"
+            name="password"
+            placeholder="Password"
+            type="password"
+            value={password}
+            handleInput={handleChange}
+            disabled={isSubmitting}
+          />
+          <FormButton
+            className="home-btn"
+            buttonText={isSubmitting ? 'Logging in...' : 'Log in'}
+            isDisabled={isSubmitting}
+            classType="primary"
+          />
+          {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+        </form>
+        <p className="special-p">Don't have an account?<Link className="link-1" to="/signup">Sign up</Link></p>
+      </div>
     </div>
   );
 }

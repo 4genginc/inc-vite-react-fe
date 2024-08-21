@@ -3,7 +3,6 @@ export default {
   '@header__bg': '#FEAD2A',
   '@header__bg--dark': '#263E47',
   '@footer__bg': '#6A0C49',
-
   '@body__bg': '#EEEDD9',
   '@body__bg--green': '#9FB222',
   '@body__bg--blue': '#096A70',
@@ -66,8 +65,10 @@ export default {
   '@pl__na__top_-btn_-bg--tyrian-purple': '#5D0B40',
   '@login__btn__bg--blue-lagoon': '#006C72',
   '@reg-content__btn__bg--blue-lagoon': '#006C72',
+
   // Borders
   '@btn__border-radius': '6px',
+
   // Fonts
   '@text__font-family': "'Montserrat', sans-serif",
   '@text__font-family--header': "'Staatliches', cursive",
@@ -88,6 +89,7 @@ export default {
   '@text__line-height--body': '1.375rem',
   '@text__line-height--footer': '1.25rem',
 
+  // text color
   '@text__color--maroon': '#3B0E2B',
   '@text__color--white': '#FFFFFF',
   '@text__color--black': '#232420',
@@ -126,8 +128,10 @@ export default {
   '@reg-content__text__color--white': '#FFFFFF',
   '@reg-content__text__color--light-grey': '#D3D3D3',
   '@registration-progress__text__color--light-sea-green': '#21C5b5',
+
   // Focus Effects
   '@input__border--focus': '1px solid #21C5B5',
   '@input__box-shadow--focus': '0px 0px 10px 1px #21C5B5',
   '@input__transition--focus': '0.1s',
+  //
 };

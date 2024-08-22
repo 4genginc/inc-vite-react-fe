@@ -10,8 +10,9 @@ function RenderHomePage(props) {
     userInfo,
     // authService
   } = props;
-  return (
-    <div>
+  return (<>
+
+    <div >
       <h1>Welcome to Labs Basic SPA</h1>
       {/* eslint-disable-next-line react/prop-types */}
       <h3>Hi {userInfo.name}, you are more than welcome!</h3>
@@ -19,6 +20,9 @@ function RenderHomePage(props) {
         <p>
           This is an example of a common example of how we&apos;d like for you to
           approach components.
+        </p>
+        <p>
+          <Link to="/users">UserList</Link>
         </p>
         <p>
           <Link to="/images">Images</Link>
@@ -33,22 +37,17 @@ function RenderHomePage(props) {
           <Link to="/datavis">Data Visualizations Example</Link>
         </p>
 
-          {/*<Button*/}
-          {/*  // handleClick={() => authService.logout()}*/}
-          {/*  buttonText="Logout (common button)"*/}
-          {/*/>*/}
-
-        <Button
-          type="primary"
-          // // onClick={() => authService.logout()}
-          // onClick={() => logout()}
+      </div> 
+      <Button
+        type="primary"
+        // // onClick={() => authService.logout()}
+        // onClick={() => logout()}
         >
-          Logout
-        </Button>
-
-      </div>
-    </div>
-  );
+        Logout
+      </Button>
+      
+    </div>      
+  </>);
 }
 
 export default RenderHomePage;

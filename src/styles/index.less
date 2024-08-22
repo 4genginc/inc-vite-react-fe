@@ -1,1 +1,48 @@
 @import './variables.less';
+
+// general card
+.card {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: @text__color--white;
+  border-radius: 6px;
+  width: 20%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40vh;
+  background-image: url(@background-image);
+  background-position: center;
+  background-size: cover;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.card h2 {
+  font-size: 2.5rem;
+
+}
+
+.inputs {
+  margin: 1%;
+}
+
+.card button {
+  margin: 1.5%;
+}
+
+.special-p {
+  width: 30%;
+}

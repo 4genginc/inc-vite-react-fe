@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { setUsername, setPassword, login } from '../../../state/actions/authActions';
 import { FormButton, FormInput } from '../../common';
 
+// import '../../../styles/index.less';
+
 // Define the component with a named function
 function RenderLoginPage({ username, password, isSubmitting, error, setUsername, setPassword, login }) {
   const handleChange = (event) => {
@@ -22,32 +24,37 @@ function RenderLoginPage({ username, password, isSubmitting, error, setUsername,
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          labelId="username"
-          name="username"
-          placeholder="Username"
-          value={username}
-          handleInput={handleChange}
-          disabled={isSubmitting}
-        />
-        <FormInput
-          labelId="password"
-          name="password"
-          placeholder="Password"
-          type="password"
-          value={password}
-          handleInput={handleChange}
-          disabled={isSubmitting}
-        />
-        <FormButton
-          buttonText={isSubmitting ? 'Logging in...' : 'Log in'}
-          isDisabled={isSubmitting}
-          classType="primary"
-        />
-        {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-      </form>
+    <div className="container">
+      <div className="card">
+        <form className="form" onSubmit={handleSubmit}>
+          <FormInput
+            className="inputs"
+            labelId="username"
+            name="username"
+            placeholder="Username"
+            value={username}
+            handleInput={handleChange}
+            disabled={isSubmitting}
+          />
+          <FormInput
+            className="inputs"
+            labelId="password"
+            name="password"
+            placeholder="Password"
+            type="password"
+            value={password}
+            handleInput={handleChange}
+            disabled={isSubmitting}
+          />
+          <FormButton
+            className="inputs"
+            buttonText={isSubmitting ? 'Logging in...' : 'Log in'}
+            isDisabled={isSubmitting}
+            classType="primary"
+          />
+          {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+        </form>
+      </div>
     </div>
   );
 }

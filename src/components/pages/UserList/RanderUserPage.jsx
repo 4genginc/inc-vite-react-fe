@@ -7,17 +7,19 @@ const RanderUserPage = ({ user }) => {
   const { user_id, username, role_type } = user;
 
   return (
-    <div className="class-wrapper">
-      <div>
+    <div className="container">
+      <div className="card">
         <h5> {user_id} </h5>
+        {/* <img src={'https://www.uncommongoods.com/images/items/47400/47435_1_360px.jpg'} alt={''} /> */}
         <h5> {username} </h5>
         <h5> {role_type} </h5>
-      </div>
 
-      <Link to={`/user/${user_id}`} >
-        <input type="button" value="View"/>
-      </Link>
+        <Link to={`/user/${user_id}`}>
+          <input type="button" value="View" />
+        </Link>
+      </div>
     </div>
+
   );
 };
 

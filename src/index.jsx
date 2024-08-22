@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
@@ -30,6 +30,9 @@ import { LoginPage } from './components/pages/Login';
 import { NotFoundPage } from './components/pages/NotFound';
 
 
+import { UserListPage } from './components/pages/UserList'
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <Router>
@@ -52,6 +55,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 // eslint-disable-next-line react-refresh/only-export-components
 function App() {
+
+  const [users, setUsers] = useState([]);
+
   return (
     <Switch>
       <Route path="/login" component={LoginPage} />
@@ -65,6 +71,7 @@ function App() {
       <Route path="/example-list" component={ExampleListPage} />
       <Route path="/profile-list" component={ProfileListPage} />
       <Route path="/datavis" component={ExampleDataViz} />
+      <Route path="/users"> <UserListPage users = { users } setUsers = { setUsers } /> </Route>
       <Route component={NotFoundPage} />
     </Switch>
   );

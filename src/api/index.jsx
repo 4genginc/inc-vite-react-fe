@@ -1,49 +1,48 @@
 import axios from 'axios';
 
-// Define the API URLs using the environment variables
-// const apiUrl = `${import.meta.env.VITE_API_URI}/profiles`;
-const apiUrl = import.meta.env.VITE_EXAMPLE_URL;
 const exampleUrl = import.meta.env.VITE_EXAMPLE_URL;
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
-const getDSData = url => {
-  if (!url) {
-    throw new Error('No URL provided');
-  }
-  return axios
-    .get(url)
-    .then(res => JSON.parse(res.data))
-    .catch(err => console.log('ERROR', err));
-};
+// Create a basic axios instance for non-authenticated requests
+const axiosInstance = axios.create({
+  baseURL: baseUrl
+});
 
-const sleep = time =>
-  new Promise(resolve => {
-    setTimeout(resolve, time);
+// Function to create an authenticated axios instance
+const axiosWithAuth = ()=> {
+  const token = localStorage.getItem('token');
+
+  return axios.create({
+    headers: {
+      authorization: token
+    },
+    baseURL: baseUrl
   });
+}
 
-const getExampleData = () => {
-  return axios
-    .get(exampleUrl)
-    .then(response => response.data);
-};
+// Function to handle sleep/delay
+const sleep = (time) => new Promise(resolve => setTimeout(resolve, time));
 
-const getAuthHeader = authState => {
-  if (!authState.isAuthenticated) {
-    throw new Error('Not authenticated');
-  }
-  return { Authorization: `Bearer ${authState.idToken}` };
-};
-
-const apiAuthGet = authHeader => {
-  return axios.get(apiUrl, { headers: authHeader });
-};
-const getProfileData = authState => {
+// Fetch example data using the basic axios instance
+const getExampleData = async () => {
   try {
-    return apiAuthGet(getAuthHeader(authState)).then(response => response.data);
+    const response = await axiosInstance.get(exampleUrl);
+    return response.data;
   } catch (error) {
-    return new Promise(() => {
-      console.log(error);
-      return [];
-    });
+    console.error('Failed to fetch example data:', error);
+    throw error; // Propagate the error
   }
 };
-export { sleep, getExampleData, getProfileData, getDSData };
+
+// Function to fetch profile data using authenticated axios instance
+const getProfileData = async () => {
+  try {
+    const response = await axiosWithAuth().get('/profiles');
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch profile data:', error);
+    throw error; // Propagate the error
+  }
+};
+
+export { sleep, axiosWithAuth, getExampleData, getProfileData };

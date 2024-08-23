@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
@@ -28,9 +28,9 @@ import { LandingPage } from './components/pages/Landing';
 import { LoadingComponent } from './components/common';
 import { LoginPage } from './components/pages/Login';
 import { NotFoundPage } from './components/pages/NotFound';
-import { UserListPage } from './components/pages/UserList'
+import { UserListPage } from './components/pages/User'
 
-import UserList from './components/pages/UserList/UserList_connect.jsx';
+import UserList from './components/pages/User/template/UserList_connect.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -56,8 +56,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 // eslint-disable-next-line react-refresh/only-export-components
 function App() {
 
-  const [users, setUsers] = useState([]);
-
   return (
     <Switch>
       <Route path="/login" component={LoginPage} />
@@ -71,9 +69,9 @@ function App() {
       <Route path="/example-list" component={ExampleListPage} />
       <Route path="/profile-list" component={ProfileListPage} />
       <Route path="/datavis" component={ExampleDataViz} />
-      <Route path="/users"> <UserListPage users = { users } setUsers = { setUsers } /> </Route>
+      <Route path="/users" component={UserListPage} />
 
-      <Route path="/userlist" component={UserList} />
+      <Route path="/users_connect" component={UserList} />
 
       <Route component={NotFoundPage} />
     </Switch>

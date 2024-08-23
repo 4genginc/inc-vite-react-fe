@@ -10,7 +10,6 @@ const RanderUserPage = ({ user }) => {
     <div className="container">
       <div className="card">
         <h5> {user_id} </h5>
-        {/* <img src={'https://www.uncommongoods.com/images/items/47400/47435_1_360px.jpg'} alt={''} /> */}
         <h5> {username} </h5>
         <h5> {role_type} </h5>
 

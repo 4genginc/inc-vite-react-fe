@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'; // Import PropTypes
 // import { axiosWithAuth } from '../../../api';
 
 import { connect } from 'react-redux';
-import { fetchUsers } from '../../../state/actions/userActions.jsx';
+import { fetchUsers } from '../../../../state/actions/userActions.jsx';
 
 function UserList(
   { fetchUsers, users, isLoading, error }

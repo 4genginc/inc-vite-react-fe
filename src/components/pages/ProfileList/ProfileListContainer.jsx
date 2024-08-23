@@ -2,7 +2,7 @@
 import React from 'react';
 // import { useOktaAuth } from '@okta/okta-react';
 
-import { getExampleData } from '../../../api';
+import { getExampleProfileData } from '../../../api';
 
 import { List } from '../../common';
 import RenderProfileListPage from './RenderProfileListPage';
@@ -14,7 +14,7 @@ const ProfileList = () => {
   return (
     <List
       // Use the getExampleData function to fetch data
-      getItemsData={getExampleData}
+      getItemsData={getExampleProfileData}
       // Here we are passing in a component we want to show whilst waiting for our API request
       // to complete.
       LoadingComponent={() => <div>Loading Profiles...</div>}

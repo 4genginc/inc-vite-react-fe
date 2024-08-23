@@ -39,25 +39,37 @@
 │  │	│    ├── List.jsx 
 │  │	│    └── LoadingComponent.jsx 
 │  │	└── pages 
+│  │	     ├── ExampleList 
+│  │	     │     ├── ExampleListContainer.jsx 
+│  │	     │     ├── index.jsx 
+│  │	     │     └── RenderExampleListPage.jsx 
 │  │	     ├── Landing 
 │  │	     │     ├── LandingContainer.jsx 
 │  │	     │     ├── index.jsx 
 │  │	     │     └── RenderLandingPage.jsx 
 │  │	     ├── Login 
-│  │	     │     ├── LoginContainer.jsx 
 │  │	     │     ├── index.jsx 
-│  │	     │     └── LoginContainer.jsx 
+│  │	     │     ├── LoginContainer.jsx 
+│  │	     │     └── RanderLoginPage.jsx 
+│  │	     ├── ProfileList 
+│  │	     │     ├── index.jsx 
+│  │	     │     ├── ProfileListContainer.jsx 
+│  │	     │     └── RenderProfileListPage.jsx 
+│  │	     ├── UserList 
+│  │	     │     ├── index.jsx 
+│  │	     │     ├── RanderUserPage.jsx  
+│  │	     │     └── UserListContainer.jsx
 │  │	     └── NotFound 
 │  │	           ├── index.jsx 
 │  │	           └── NotFoundPage.jsx 
 │  ├── state 
 │  │	├── actions 
+│  │	│    ├── authActions.jsx 
 │  │	│    └── usersAction.jsx 
-│  │	├── contexts 
-│  │	│    └── index.jsx 
 │  │	└── reducers 
-│  │	     ├── usersReducer.jsx 
-│  │	     └── index.jsx 
+│  │	     ├── authReducer.jsx 
+│  │	     ├── index.jsx 
+│  │	     └── usersReducer.jsx 
 │  ├── styles 
 │  │	├── Footer 
 │  │	│    └── index.less
@@ -78,3 +90,5 @@
 ├── vitest.config.js 
 └── …
 ```
+
+`src/components/pages/docs/description.md`

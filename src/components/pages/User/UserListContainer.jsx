@@ -1,55 +1,57 @@
-import React from 'react';
-import { fetchUsers } from '../../../state/actions/userActions.jsx';
-import { connect } from 'react-redux';
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchUsers } from '../../../state/actions/userActions.jsx';
+import { List } from '../../common';
+import RenderUserListPage from './RenderUserListPage.jsx';
 
-import RanderUserPage from './RanderUserPage';
+const UserListContainer = ({ users, isLoading, error, fetchUsers }) => {
 
-function UserList({ fetchUsers, users, isLoading, error }) {
-
-  React.useEffect(() => {
-    // Dispatch the fetchUsers thunk action
-    fetchUsers(); // This action updates the Redux store state
+  useEffect(() => {
+    fetchUsers();
   }, [fetchUsers]);
 
-  if (isLoading) {
-    return <div>Loading users...</div>;
-  }
+  const getUsersData = () => {
+    return new Promise((resolve, reject) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(users);
+      }
+    });
+  };
 
-  if (error) {
-    return <div>Error loading users: {error.message}</div>;
+  if (isLoading) {
+    return <div>Loading User Profiles...</div>;
   }
 
   return (
-    <div>
-      {users.map((user, index) => 
-        <RanderUserPage key={user.id || index} user={user} />
-      )}
-    </div>
+    <List
+      getItemsData={getUsersData}
+      LoadingComponent={() => <div>Loading...</div>}
+      RenderItems={RenderUserListPage}
+    />
   );
-}
-
-UserList.propTypes = {
-  fetchUsers: PropTypes.func.isRequired, // Define prop types
-  users: PropTypes.array, // Assuming users is an array, adjust as necessary
-  isLoading: PropTypes.bool,
-  error: PropTypes.string // Adjust the type based on what `error` really is, e.g., object or string
 };
 
-const mapStateToProps = (state) => {
-  return (
-    {
-      users: state.userReducer.user || [], // Fallback to empty array if undefined
-      isLoading: state.userReducer.loading,
-      error: state.userReducer.error
-    }
-  )
-}
+UserListContainer.propTypes = {
+  users: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
+  fetchUsers: PropTypes.func.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  users: state.userReducer.users || [],
+  isLoading: state.userReducer.loading,
+  error: state.userReducer.error,
+});
 
 const mapDispatchToProps = {
-  fetchUsers
+  fetchUsers,
 };
 
-const ConnectedUserListContainer  = connect(mapStateToProps, mapDispatchToProps)(UserList);
+const connectedUserListContainer = connect(mapStateToProps, mapDispatchToProps)(UserListContainer);
 
-export default ConnectedUserListContainer;
+export default connectedUserListContainer;

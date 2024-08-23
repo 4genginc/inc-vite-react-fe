@@ -30,7 +30,7 @@ import { LoginPage } from './components/pages/Login';
 import { NotFoundPage } from './components/pages/NotFound';
 import { UserListPage } from './components/pages/User'
 
-import UserList from './components/pages/User/template/UserList_connect.jsx';
+import UserList from './components/pages/User/template/Redux-connect/connectUserList.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

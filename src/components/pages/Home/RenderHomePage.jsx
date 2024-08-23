@@ -25,6 +25,9 @@ function RenderHomePage(props) {
           <Link to="/users">UserList</Link>
         </p>
         <p>
+          <Link to="/users_connect">UserLis by Redux legacy</Link>
+        </p>
+        <p>
           <Link to="/images">Images</Link>
         </p>
         <p>

@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Environment variables for API URLs
-const apiUrl = import.meta.env.VITE_EXAMPLE_URL;  // This seems redundant with exampleUrl
+const apiUrl = import.meta.env.VITE_EXAMPLE_URL;
 const exampleUrl = import.meta.env.VITE_EXAMPLE_URL;
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -10,6 +10,9 @@ const sleep = time => new Promise(resolve => setTimeout(resolve, time));
 
 // Fetch example data using the base URL
 const getExampleData = () => axios.get(exampleUrl).then(response => response.data);
+
+const getExampleProfileData = () => axios.get(exampleUrl).then(response => response.data);
+
 
 // Function to create an authenticated axios instance
 const axiosWithAuth = ()=> {
@@ -46,4 +49,10 @@ const getProfileData = async authState => {
   }
 };
 
-export { sleep, axiosWithAuth, getExampleData, getProfileData };
+export {
+  sleep,
+  axiosWithAuth,
+  getExampleData,
+  getProfileData,
+  getExampleProfileData
+};

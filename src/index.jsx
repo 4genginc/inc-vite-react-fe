@@ -28,9 +28,9 @@ import { LandingPage } from './components/pages/Landing';
 import { LoadingComponent } from './components/common';
 import { LoginPage } from './components/pages/Login';
 import { NotFoundPage } from './components/pages/NotFound';
-
-
 import { UserListPage } from './components/pages/UserList'
+
+import UserList from './components/pages/UserList/UserList_connect.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -49,7 +49,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Footer />
         </Layout>
       </React.StrictMode>
-    </Router>    
+    </Router>
   </Provider>
 );
 
@@ -72,6 +72,9 @@ function App() {
       <Route path="/profile-list" component={ProfileListPage} />
       <Route path="/datavis" component={ExampleDataViz} />
       <Route path="/users"> <UserListPage users = { users } setUsers = { setUsers } /> </Route>
+
+      <Route path="/userlist" component={UserList} />
+
       <Route component={NotFoundPage} />
     </Switch>
   );

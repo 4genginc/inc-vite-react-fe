@@ -17,7 +17,7 @@ const store = createStore(
 );
 
 import { ExampleListPage } from './components/pages/ExampleList';
-import { ProfileListPage } from './components/pages/ProfileList';
+
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { ImageList } from './components/pages/ImageList';
 
@@ -28,9 +28,9 @@ import { LandingPage } from './components/pages/Landing';
 import { LoadingComponent } from './components/common';
 import { LoginPage } from './components/pages/Login';
 import { NotFoundPage } from './components/pages/NotFound';
-import { UserListPage } from './components/pages/User'
+import { ProfileListPage } from './components/pages/ProfileList';
 
-import UserList from './components/pages/User/template/Redux-connect/connectUserList.jsx';
+import UserList from './components/pages/User_template/Redux-connect/connectUserList.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -69,9 +69,8 @@ function App() {
       <Route path="/example-list" component={ExampleListPage} />
       <Route path="/profile-list" component={ProfileListPage} />
       <Route path="/datavis" component={ExampleDataViz} />
-      <Route path="/users" component={UserListPage} />
 
-      <Route path="/users_connect" component={UserList} />
+      <Route path="/users" component={UserList} />
 
       <Route component={NotFoundPage} />
     </Switch>

@@ -1,27 +1,45 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { List } from '../../common';
+import RenderUserListPage from './RenderProfileListPage.jsx';
+
 // import { useOktaAuth } from '@okta/okta-react';
 
-import { getExampleProfileData } from '../../../api';
-
-import { List } from '../../common';
-import RenderProfileListPage from './RenderProfileListPage';
-
 // Here is an example of using our reusable List component to display some list data to the UI.
-const ProfileList = () => {
-  // const { authState } = useOktaAuth();
+const ProfileListContainer = ({ users, isLoading, error, fetchUsers }) => {
+    // const { authState } = useOktaAuth();
+  useEffect(() => {
+    fetchUsers();
+  }, [fetchUsers]);
+
+  const getUsersData = () => {
+    return new Promise((resolve, reject) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(users);
+      }
+    });
+  };
+
+  if (isLoading) {
+    return <div>Loading User Profiles...</div>;
+  }
 
   return (
     <List
-      // Use the getExampleData function to fetch data
-      getItemsData={getExampleProfileData}
-      // Here we are passing in a component we want to show whilst waiting for our API request
-      // to complete.
-      LoadingComponent={() => <div>Loading Profiles...</div>}
-      // Here we are passing in a component that receives our new data and returns our JSX elements.
-      RenderItems={RenderProfileListPage}
+      getItemsData={getUsersData}
+      LoadingComponent={() => <div>Loading...</div>}
+      RenderItems={RenderUserListPage}
     />
   );
 };
 
-export default ProfileList;
+ProfileListContainer.propTypes = {
+  users: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
+  fetchUsers: PropTypes.func.isRequired
+};
+  export default ProfileListContainer;

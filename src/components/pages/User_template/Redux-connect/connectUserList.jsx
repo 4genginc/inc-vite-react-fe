@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchUsers } from '../../../../../state/actions/userActions.jsx';
+import { fetchUsers } from '../../../../state/actions/userActions.jsx';
 import UserList from './UserList.jsx';  // Assuming UserList is now in a separate file
 
 const mapStateToProps = (state) => ({

@@ -67,11 +67,13 @@
 │  ├── state 
 │  │	├── actions 
 │  │	│    ├── authActions.jsx 
-│  │	│    └── usersAction.jsx 
+│  │	│    ├── userDetailActions.jsx 
+│  │	│    └── userListActions.jsx 
 │  │	└── reducers 
 │  │	     ├── authReducer.jsx 
 │  │	     ├── index.jsx 
-│  │	     └── usersReducer.jsx 
+│  │	     ├── userDetailReducer.jsx 
+│  │	     └── userListReducer.jsx 
 │  ├── styles 
 │  │	├── Footer 
 │  │	│    └── index.less

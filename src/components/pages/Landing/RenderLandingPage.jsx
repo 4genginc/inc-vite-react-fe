@@ -14,7 +14,7 @@ function RenderLandingPage() {
           components.
         </p>
         <p>
-          <Link to="/profile-list">Profiles</Link>
+          <Link to="/user-list">UserList</Link>
         </p>
         <p>
           <Link to="/users">(demo: UserLis by Redux legacy)</Link>

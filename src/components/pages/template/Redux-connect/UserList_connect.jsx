@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { fetchUsers } from '../../../../state/actions/userActions.jsx';
+import { fetchUsers } from '../../../../state/actions/userListActions.jsx';
 
 function UserList({ fetchUsers, users, isLoading, error }) {
   React.useEffect(() => {
@@ -49,9 +49,9 @@ UserList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  users: state.userReducer.users || [],
-  isLoading: state.userReducer.loading,
-  error: state.userReducer.error
+  users: state.userListReducer.users || [],
+  isLoading: state.userListReducer.loading,
+  error: state.userListReducer.error
 });
 
 const mapDispatchToProps = {

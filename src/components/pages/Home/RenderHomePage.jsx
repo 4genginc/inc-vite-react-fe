@@ -22,10 +22,10 @@ function RenderHomePage(props) {
           approach components.
         </p>
         <p>
-          <Link to="/profile-list">Profiles</Link>
+          <Link to="/user-list">UserList</Link>
         </p>
         <p>
-          <Link to="/users">(demo: UserLis by Redux legacy)</Link>
+          <Link to="/users">(demo: UserList via Redux legacy)</Link>
         </p>
         <p>
           <Link to="/images">Images</Link>

@@ -17,7 +17,6 @@ const store = createStore(
 );
 
 import { ExampleListPage } from './components/pages/ExampleList';
-
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { ImageList } from './components/pages/ImageList';
 
@@ -28,7 +27,8 @@ import { LandingPage } from './components/pages/Landing';
 import { LoadingComponent } from './components/common';
 import { LoginPage } from './components/pages/Login';
 import { NotFoundPage } from './components/pages/NotFound';
-import { ProfileListPage } from './components/pages/ProfileList';
+import { UserListPage } from './components/pages/UserList';
+import { UserDetailPage } from './components/pages/UserDetail';
 
 import UserList from './components/pages/template/Redux-connect/UserList_connect';
 
@@ -58,6 +58,8 @@ function App() {
 
   return (
     <Switch>
+      <Route path="/user-list/:user_id" component={UserDetailPage} />
+      <Route path="/user-list" component={UserListPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/landing" component={LandingPage} />
       <Route
@@ -67,7 +69,6 @@ function App() {
       />
       <Route path="/images" component={ImageList} />
       <Route path="/example-list" component={ExampleListPage} />
-      <Route path="/profile-list" component={ProfileListPage} />
       <Route path="/datavis" component={ExampleDataViz} />
 
       <Route path="/users" component={UserList} />

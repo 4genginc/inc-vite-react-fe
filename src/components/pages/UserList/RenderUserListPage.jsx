@@ -5,20 +5,12 @@ import PropTypes from 'prop-types';
 
 import '../../../styles/General/index.less'
 
-function RenderProfileListPage({ data }) {
+function RenderUserListPage({ data }) {
   const { url } = useRouteMatch();
 
   return (
     <div className='items-list-wrapper'>
-      {/*{props.data.map((item) => (*/}
-      {/*  <figure key={item.id}>*/}
-      {/*    <img src={item.avatarUrl} alt={item.name} />*/}
-      {/*    <figcaption>*/}
-      {/*      <h3>{item.name}</h3>*/}
-      {/*    </figcaption>*/}
-      {/*  </figure>*/}
-      {/*))}*/}
-      {/* hard code from RenderExampleListPage*/}
+
       {data.map((item, index) => (
         <figure key={index} className='item-card'>
           <figcaption className="card">
@@ -36,10 +28,10 @@ function RenderProfileListPage({ data }) {
   );
 }
 
-RenderProfileListPage.propTypes = {
+RenderUserListPage.propTypes = {
   data: PropTypes.array.isRequired,
 };
 
 
 
-export default RenderProfileListPage;
+export default RenderUserListPage;

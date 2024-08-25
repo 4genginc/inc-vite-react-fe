@@ -36,8 +36,10 @@ export const loginFailure = (error) => ({
 export const login = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
   try {
-    const response = await axios.post('https://node-js-api-ad1fa2d2125b.herokuapp.com/api/auth/login', credentials);
+    const response = await axios.post('https://ft-anywhere-fitness-6-0f101cd9a63d.herokuapp.com/api/auth/login', credentials);
     const { token, role, username: userResp } = response.data;
+
+    console.log('debug - response.data: ', response.data)
 
     localStorage.setItem("token", token);
     localStorage.setItem("role", role);

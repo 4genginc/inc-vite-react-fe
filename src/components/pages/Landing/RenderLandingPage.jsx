@@ -10,10 +10,14 @@ function RenderLandingPage() {
       <h1 className="landing-page__title">Welcome to Labs Basic SPA</h1>
       <div className="landing-page__content">
         <p>
-          This is <span className="highlight">an example</span> of how we&apos;d like for you to approach page components.
+          This is <span className="highlight">an example</span> of how we&apos;d like for you to approach page
+          components.
         </p>
         <p>
-          <Link to="/">Home</Link>
+          <Link to="/profile-list">Profiles</Link>
+        </p>
+        <p>
+          <Link to="/users">(demo: UserLis by Redux legacy)</Link>
         </p>
         <Button buttonText="common button" />
       </div>

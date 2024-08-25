@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { setUsername, setPassword, login } from '../../../state/actions/authActions';
 import { FormButton, FormInput } from '../../common';
 
+import { useHistory } from "react-router-dom";
+
 // import '../../../styles/index.less';
 
 // Define the component with a named function
@@ -18,17 +20,18 @@ function RenderLoginPage({ username, password, isSubmitting, error, setUsername,
     }
   };
 
+  const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
     login({ username, password });
+    history.push("/landing");
   };
 
   return (
-    <div className="container">
-      <div className="card">
-        <form className="form" onSubmit={handleSubmit}>
+    <div>
+      <div>
+        <form onSubmit={handleSubmit}>
           <FormInput
-            className="inputs"
             labelId="username"
             name="username"
             placeholder="Username"
@@ -37,7 +40,6 @@ function RenderLoginPage({ username, password, isSubmitting, error, setUsername,
             disabled={isSubmitting}
           />
           <FormInput
-            className="inputs"
             labelId="password"
             name="password"
             placeholder="Password"
@@ -47,7 +49,7 @@ function RenderLoginPage({ username, password, isSubmitting, error, setUsername,
             disabled={isSubmitting}
           />
           <FormButton
-            className="inputs"
+
             buttonText={isSubmitting ? 'Logging in...' : 'Log in'}
             isDisabled={isSubmitting}
             classType="primary"

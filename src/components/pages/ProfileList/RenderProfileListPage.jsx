@@ -1,14 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import '../../../styles/General/index.less'
+
 function RenderProfileListPage({ data }) {
+  const { url } = useRouteMatch();
+
   return (
-    <div>
-      <p>
-        <Link to="/">Home</Link>
-      </p>
+    <div className='items-list-wrapper'>
       {/*{props.data.map((item) => (*/}
       {/*  <figure key={item.id}>*/}
       {/*    <img src={item.avatarUrl} alt={item.name} />*/}
@@ -18,14 +19,14 @@ function RenderProfileListPage({ data }) {
       {/*  </figure>*/}
       {/*))}*/}
       {/* hard code from RenderExampleListPage*/}
-      {data.map((user, index) => (
-        <figure key={index} className="container">
+      {data.map((item, index) => (
+        <figure key={index} className='item-card'>
           <figcaption className="card">
-            <h5>User ID: {user.user_id}</h5>
-            <h5>Username: {user.username}</h5>
-            <h5>Role: {user.role_type}</h5>
+            <h5>User ID: {item.user_id}</h5>
+            <h5>Username: {item.username}</h5>
+            <h5>Role: {item.role_type}</h5>
 
-            <Link to={`/user/${user.user_id}`}>
+            <Link to={`${url}/${item.user_id}`}>
               <input type="button" value="View" />
             </Link>
           </figcaption>

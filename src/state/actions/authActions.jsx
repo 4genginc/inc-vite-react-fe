@@ -39,13 +39,11 @@ export const login = (credentials) => async (dispatch) => {
     const response = await axios.post('https://node-js-api-ad1fa2d2125b.herokuapp.com/api/auth/login', credentials);
     const { token, role, username: userResp } = response.data;
 
-    console.log('debug-response.data: ', response.data);
-
     localStorage.setItem("token", token);
     localStorage.setItem("role", role);
     localStorage.setItem("username", userResp);
     dispatch(loginSuccess({ token, role, username: userResp }));
-    // Add navigation redirection here if needed
+
   } catch (error) {
     dispatch(loginFailure(error.response ? error.response.data : error.message));
   }

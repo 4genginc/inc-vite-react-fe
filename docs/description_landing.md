@@ -215,43 +215,121 @@ export default RanderUserPage;
 
 ```
 
-`src/components/pages/UserList/UserListContainer.jsx`
+`src/components/pages/ProfileList/index.jsx`
 ```
-import { useEffect } from 'react';
-import PropTypes from 'prop-types'; // Ensure this is uncommented
-import { axiosWithAuth } from '../../../api';
-import RanderUserPage from "./RanderUserPage"
+import { connect } from 'react-redux';
+import { fetchUsers } from '../../../state/actions/userActions.jsx';
+import ProfileListContainer from './ProfileListContainer.jsx';
 
-function UserList({ users, setUsers }) {
+const mapStateToProps = (state) => ({
+  users: state.userReducer.users || [],
+  isLoading: state.userReducer.loading,
+  error: state.userReducer.error,
+});
 
+const mapDispatchToProps = {
+  fetchUsers,
+};
+
+// Use named export here
+export const ProfileListPage = connect(mapStateToProps, mapDispatchToProps)(ProfileListContainer);
+```
+
+`src/components/pages/ProfileList/ProfileListContainer.jsx`
+```
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { List } from '../../common';
+import RenderUserListPage from './RenderProfileListPage.jsx';
+
+// import { useOktaAuth } from '@okta/okta-react';
+
+// Here is an example of using our reusable List component to display some list data to the UI.
+const ProfileListContainer = ({ users, isLoading, error, fetchUsers }) => {
+    // const { authState } = useOktaAuth();
   useEffect(() => {
-    axiosWithAuth()
-      .get('/users/')
-      .then(resp => {
-        setUsers(resp.data);
-      })
-      .catch(err => {
-        console.error(err); // Changed from console.log to console.error for error logging
-      });
-  }, [setUsers]); // Added setUsers to dependencies array to adhere to exhaustive-deps rule
+    fetchUsers();
+  }, [fetchUsers]);
+
+  const getUsersData = () => {
+    return new Promise((resolve, reject) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(users);
+      }
+    });
+  };
+
+  if (isLoading) {
+    return <div>Loading User Profiles...</div>;
+  }
 
   return (
-    <div>
-      {users.map((user, index) =>
-        <RanderUserPage key={user.id || index} user={user} />,
-      )}
+    <List
+      getItemsData={getUsersData}
+      LoadingComponent={() => <div>Loading...</div>}
+      RenderItems={RenderUserListPage}
+    />
+  );
+};
+
+ProfileListContainer.propTypes = {
+  users: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
+  fetchUsers: PropTypes.func.isRequired
+};
+  export default ProfileListContainer;
+```
+
+`src/components/pages/ProfileList/RenderProfileListPage.jsx`
+```
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
+import { Link, useRouteMatch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import '../../../styles/General/index.less'
+
+function RenderProfileListPage({ data }) {
+  const { url } = useRouteMatch();
+
+  return (
+    <div className='items-list-wrapper'>
+      {/*{props.data.map((item) => (*/}
+      {/*  <figure key={item.id}>*/}
+      {/*    <img src={item.avatarUrl} alt={item.name} />*/}
+      {/*    <figcaption>*/}
+      {/*      <h3>{item.name}</h3>*/}
+      {/*    </figcaption>*/}
+      {/*  </figure>*/}
+      {/*))}*/}
+      {/* hard code from RenderExampleListPage*/}
+      {data.map((item, index) => (
+        <figure key={index} className='item-card'>
+          <figcaption className="card">
+            <h5>User ID: {item.user_id}</h5>
+            <h5>Username: {item.username}</h5>
+            <h5>Role: {item.role_type}</h5>
+
+            <Link to={`${url}/${item.user_id}`}>
+              <input type="button" value="View" />
+            </Link>
+          </figcaption>
+        </figure>
+      ))}
     </div>
   );
 }
 
-UserList.propTypes = {
-  users: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    // Include other user object properties if needed
-  })).isRequired,
-  setUsers: PropTypes.func.isRequired
+RenderProfileListPage.propTypes = {
+  data: PropTypes.array.isRequired,
 };
 
-export default UserList;
+
+
+export default RenderProfileListPage;
 ```
 

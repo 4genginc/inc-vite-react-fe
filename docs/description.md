@@ -11,7 +11,6 @@
 │  │	├── List.test.jsx 
 │  │	├── LoadingComponent.test.jsx 
 │  │	├── NotFoundPage.test.jsx 
-│  │	├── ProfileListContainer.test.jsx 
 │  │	├── Readme.md 
 │  │	├── RenderExampleListPage.test.jsx 
 │  │	├── RenderHomePage.test.jsx
@@ -43,6 +42,10 @@
 │  │	     │     ├── ExampleListContainer.jsx 
 │  │	     │     ├── index.jsx 
 │  │	     │     └── RenderExampleListPage.jsx 
+│  │	     ├── Home 
+│  │	     │     ├── HomeContainer.jsx 
+│  │	     │     ├── index.jsx 
+│  │	     │     └── RenderHomePage.jsx 
 │  │	     ├── Landing 
 │  │	     │     ├── LandingContainer.jsx 
 │  │	     │     ├── index.jsx 
@@ -51,17 +54,16 @@
 │  │	     │     ├── index.jsx 
 │  │	     │     ├── LoginContainer.jsx 
 │  │	     │     └── RanderLoginPage.jsx 
+│  │	     ├── NotFound 
+│  │	     │     ├── index.jsx 
+│  │	     │     └── NotFoundPage.jsx 
 │  │	     ├── ProfileList 
 │  │	     │     ├── index.jsx 
 │  │	     │     ├── ProfileListContainer.jsx 
 │  │	     │     └── RenderProfileListPage.jsx 
-│  │	     ├── UserList 
-│  │	     │     ├── index.jsx 
-│  │	     │     ├── RanderUserPage.jsx  
-│  │	     │     └── UserListContainer.jsx
-│  │	     └── NotFound 
-│  │	           ├── index.jsx 
-│  │	           └── NotFoundPage.jsx 
+│  │	     └── template 
+│  │	           ├── Redux-connect 
+│  │	           └── Redux-useSelectore 
 │  ├── state 
 │  │	├── actions 
 │  │	│    ├── authActions.jsx 
@@ -90,5 +92,3 @@
 ├── vitest.config.js 
 └── …
 ```
-
-`src/components/pages/docs/description.md`

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { List } from '../../common';
-import RenderUserDetailPage from './RenderUserDetailPage';
+import RenderUserDetailPage from './RenderUserDetailPage.jsx';
 
 const UserDetailContainer = ({ user, isLoading, error, fetchUserDetails }) => {
   const { user_id } = useParams();

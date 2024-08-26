@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import PropTypes from 'prop-types'; // Import PropTypes
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// import { Button } from '../../common';
+
 import { Button } from 'antd';
 
-function RenderLandingPage(props) {
+function RenderDashboardPage(props) {
 
   return (<>
     <div >
@@ -32,9 +32,9 @@ function RenderLandingPage(props) {
   </>);
 }
 
-// Define prop types for the component
-RenderLandingPage.propTypes = {
-  username: PropTypes.string.isRequired, // Add username as a required string prop
+RenderDashboardPage.propTypes = {
+  username: PropTypes.string.isRequired,
 };
 
-export default RenderLandingPage;
+export default RenderDashboardPage;
+
